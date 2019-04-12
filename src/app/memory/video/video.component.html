@@ -1,0 +1,20 @@
+<GridLayout columns="*" rows="240, *, 80" >
+    <FlexboxLayout row="0" col="0" flexDirection="column" class="container">
+        <Image class="video" [src]="memory.preview"></Image>
+    </FlexboxLayout>
+
+    <FlexboxLayout row="1" col="0" flexDirection="column" class="text">
+        <Label [text]="'Time: ' + memory.time" uppercase></Label>
+        <Label [text]="'Duration: ' + memory.duration"></Label>
+        <Label [text]="'Location: ' + memory.location"></Label>
+        <Label [text]="'Size: ' + memory.size + ' mb'"></Label>
+        <FlexboxLayout *ngIf="memory?.with">
+            <Label text="With:"></Label>
+            <Label [text]="user" *ngFor="let user of memory.with"></Label>
+        </FlexboxLayout>
+    </FlexboxLayout>
+
+    <FlexboxLayout row="2" col="0" class="buttons">
+        <Label class="h2" text="Buttons" (tap)="goBack()"></Label>
+    </FlexboxLayout>
+</GridLayout>

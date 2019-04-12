@@ -1,0 +1,18 @@
+@import '../../style/app-variables';
+
+.container {
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.text {
+    padding: 0 15;
+
+    Label {
+        color: $primary;
+    }
+}
+
+.buttons {
+    justify-content: center;
+}

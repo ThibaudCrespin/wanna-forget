@@ -1,23 +1,23 @@
 import { Component, OnInit } from "@angular/core";
 
-import { Item } from "./item";
-import { ItemService } from "./item.service";
+import { User } from "../../models/user";
+import { UserService } from "~/app/services/user.service";
 
 @Component({
-    selector: "ns-items",
+    selector: "ns-header",
     moduleId: module.id,
-    templateUrl: "./items.component.html"
+    templateUrl: "./header.component.html",
+    styleUrls: ["./header.component.scss"]
 })
-export class ItemsComponent implements OnInit {
-    items: Array<Item>;
-
+export class HeaderComponent implements OnInit {
+    user: User;
     // This pattern makes use of Angular’s dependency injection implementation to
     // inject an instance of the ItemService service into this class.
     // Angular knows about this service because it is included in your app’s main NgModule,
     // defined in app.module.ts.
-    constructor(private itemService: ItemService) { }
+    constructor(private userService: UserService) {}
 
     ngOnInit(): void {
-        this.items = this.itemService.getItems();
+        this.user = this.userService.getCurrentUser();
     }
 }

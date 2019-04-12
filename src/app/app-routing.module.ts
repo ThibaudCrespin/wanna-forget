@@ -2,13 +2,26 @@ import { NgModule } from "@angular/core";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 import { Routes } from "@angular/router";
 
-import { ItemsComponent } from "./item/items.component";
-import { ItemDetailComponent } from "./item/item-detail.component";
+import { InitialComponent } from './initial/initial.component';
+import { StartComponent } from './start/start.component';
+import { MemoryComponent } from "./memory/memory.component";
+import { ListComponent } from "./memory/list/list.component";
+import { VideoComponent } from "./memory/video/video.component";
 
 const routes: Routes = [
-    { path: "", redirectTo: "/items", pathMatch: "full" },
-    { path: "items", component: ItemsComponent },
-    { path: "item/:id", component: ItemDetailComponent }
+    { path: "", redirectTo: "/init", pathMatch: "full" },
+    { path: "init", component: InitialComponent },
+    { path: "start", component: StartComponent },
+    {
+        path: "memory",
+        component: MemoryComponent,
+        children: [
+            { path: "", redirectTo: "list", pathMatch: "full" },
+            { path: "list", component: ListComponent },
+            { path: "video/:id", component: VideoComponent },
+        ]
+    },
+    { path: '**', component: InitialComponent }
 ];
 
 @NgModule({

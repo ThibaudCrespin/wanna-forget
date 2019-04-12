@@ -1,0 +1,14 @@
+<GridLayout columns="*" rows="75, *, 50, 80" >
+    <FlexboxLayout row="0" col="0" class="container">
+        <Label class="h1" text="Date Picker" ></Label>
+    </FlexboxLayout>
+    <ScrollView class="scroll" row="1" col="0">
+        <FlexboxLayout flexDirection="column" class="list">
+            <ns-list-item *ngFor="let item of items" [item]="item"></ns-list-item>
+        </FlexboxLayout>
+    </ScrollView>
+    <FlexboxLayout row="2" col="0" class="container">
+        <Label class="h2" text="Scroll"></Label>
+    </FlexboxLayout>
+    <Button row="3" col="0" text="Leave Memory" (tap)="goBack($event)" pageTransition="slide" class="button"></Button>
+</GridLayout>
