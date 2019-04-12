@@ -1,7 +1,15 @@
-<FlexboxLayout flexDirection="column" class="page">
-    <Label class="h1" text="Wanna Forget"></Label>
-    <Label class="p" text="2.0.1"></Label>
-    <Button text="Waiting for Connection" [nsRouterLink]="['/memory/list']" pageTransition="slide"></Button>
-    <Label class="p" text="Successfully connected to the chip" [nsRouterLink]="['/archives']" pageTransition="slide"></Label>
-    <Label class="p" text="Archives" [nsRouterLink]="['/archives']" pageTransition="slide"></Label>
-</FlexboxLayout>
+<GridLayout class="page" columns="*" rows="80, *, 80">
+    <FlexboxLayout row="0" col="0" flexDirection="column" class="title">
+        <Label class="h1" text="Wanna Forget"></Label>
+        <Label class="p" text="2.0.1"></Label>
+    </FlexboxLayout>
+
+    <FlexboxLayout row="1" col="0" flexDirection="column" class="circle">
+        <Button text="Waiting for Connection" [nsRouterLink]="['/memory/list']" pageTransition="slide"></Button>
+        <Label class="p" text="Get close to the chip"></Label>
+    </FlexboxLayout>
+
+    <FlexboxLayout row="2" col="0" flexDirection="column" class="footer">
+        <Label class="p" text="Archives" [nsRouterLink]="['/archives']" pageTransition="slide"></Label>
+    </FlexboxLayout>
+</GridLayout>

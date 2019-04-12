@@ -1,6 +1,7 @@
 <GridLayout (swipe)="onSwipe($event)" class="page" columns="*" rows="80, *">
     <ns-header row="0" col="0"></ns-header>
-    <StackLayout row="1" col="0" flexDirection="column">
+    <ActivityIndicator row="1" col="0" #activityIndicator [busy]="isLoading" (busyChange)="onBusyChanged($event)" width="100" height="100" class="activity-indicator"></ActivityIndicator>
+    <StackLayout row="1" col="0" flexDirection="column" *ngIf="!isLoading">
         <router-outlet></router-outlet>
     </StackLayout>
 </GridLayout>

@@ -2,23 +2,22 @@ import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
-import { MemoryModule } from "./memory/memory.module";
-
 import { AppComponent } from "./app.component";
 
 import { InitialComponent } from "./initial/initial.component";
 import { StartComponent } from "./start/start.component";
 
-import { StartService } from "./services/start.service";
-import { InitialService } from "./services/initial.service";
-
-import { UserService } from "./services/user.service";
-import { MemoryService } from "./services/memory.service";
 import { ListComponent } from "./memory/list/list.component";
 import { VideoComponent } from "./memory/video/video.component";
 import { MemoryComponent } from "./memory/memory.component";
 import { HeaderComponent } from "./memory/header/header.component";
 import { ItemComponent } from "./memory/list/item/item.component";
+import { ButtonsComponent } from "./memory/video/buttons/buttons.component";
+
+import { StartService } from "./services/start.service";
+import { InitialService } from "./services/initial.service";
+import { UserService } from "./services/user.service";
+import { MemoryService } from "./services/memory.service";
 
 // Uncomment and add to NgModule imports if you need to use two-way binding
 // import { NativeScriptFormsModule } from "nativescript-angular/forms";
@@ -32,8 +31,7 @@ import { ItemComponent } from "./memory/list/item/item.component";
     ],
     imports: [
         NativeScriptModule,
-        AppRoutingModule,
-        MemoryModule
+        AppRoutingModule
     ],
     declarations: [
         AppComponent,
@@ -43,7 +41,8 @@ import { ItemComponent } from "./memory/list/item/item.component";
         HeaderComponent,
         ItemComponent,
         ListComponent,
-        VideoComponent
+        VideoComponent,
+        ButtonsComponent
     ],
     providers: [
         StartService,

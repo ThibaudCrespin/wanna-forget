@@ -1,0 +1,36 @@
+@import '../style/app-variables';
+
+.title {
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    justify-content: center;
+    align-items: center;
+
+    Button {
+        width: 200;
+        height: 200;
+        border-radius: 100%;
+        background-color: $primary;
+        font-weight: 300;
+        font-size: 22;
+    }
+
+    .p {
+        margin: 15 0 0 0;
+    }
+}
+
+.footer {
+    justify-content: center;
+    align-items: center;
+
+    Label {
+        font-weight: 500;
+        font-size: 24;
+        text-decoration: underline;
+        color: $primary;
+    }
+}

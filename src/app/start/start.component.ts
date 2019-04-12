@@ -8,7 +8,8 @@ import { UserService } from "../services/user.service";
 @Component({
     selector: "ns-start",
     moduleId: module.id,
-    templateUrl: "./start.component.html"
+    templateUrl: "./start.component.html",
+    styleUrls: ["./start.component.scss"]
 })
 export class StartComponent implements OnInit {
     userId: Number;

@@ -20,6 +20,7 @@ export class MemoryComponent implements OnInit {
     public user: User;
     public memories: Array<Memory>;
     public direction: Number;
+    public isLoading: Boolean;
 
     // This pattern makes use of Angular’s dependency injection implementation to
     // inject an instance of the ItemService service into this class.
@@ -37,7 +38,7 @@ export class MemoryComponent implements OnInit {
             this.userId = params["userId"];
         });
 
-        console.log(this.route);
+        this.isLoading = true;
     }
 
     ngOnInit(): void {
@@ -54,8 +55,6 @@ export class MemoryComponent implements OnInit {
 
         this.direction = args.direction;
 
-        console.log(this.direction);
-
         switch(args.direction) {
             case 1: this.goBack(); break;
             default: null;
@@ -64,5 +63,12 @@ export class MemoryComponent implements OnInit {
 
     goBack(event: any = ''): void {
         this.location.back();
+    }
+
+    onBusyChanged(event: any = ''): void {
+        setTimeout(() => {
+            this.isLoading = false;
+        }, 2000);
+
     }
 }

@@ -13,17 +13,21 @@ import { UserService } from "~/app/services/user.service";
 export class ListComponent implements OnInit {
     private userId: Number;
     @Input() items: Array<Memory>;
+
+    public icons: any;
     // This pattern makes use of Angular’s dependency injection implementation to
     // inject an instance of the ItemService service into this class.
     // Angular knows about this service because it is included in your app’s main NgModule,
     // defined in app.module.ts.
     constructor(private router: RouterExtensions, private memoryService: MemoryService, private userService: UserService) {
         this.userId = this.userService.getCurrentUserId();
-        console.log('LIST');
     }
 
     ngOnInit(): void {
         this.items = this.memoryService.getMemoriesByUser(this.userId);
+        this.icons = {
+            scroll: String.fromCharCode(0xe103),
+        }
     }
 
     goBack(event: any = ''): void {

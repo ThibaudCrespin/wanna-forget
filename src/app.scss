@@ -16,7 +16,13 @@ refer to http://docs.nativescript.org/ui/theme.
 @import './app/style/app-common';
 
 .root {
-    font-family: 'FiraSans-Regular', sans-serif;
+    font-family: $font;
+    background-color: $secondary;
+}
+
+.fa {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+    font-weight: 400;
 }
 
 Label {
