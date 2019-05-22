@@ -25,9 +25,6 @@ export class ListComponent implements OnInit {
 
     ngOnInit(): void {
         this.items = this.memoryService.getMemoriesByUser(this.userId);
-        this.icons = {
-            scroll: String.fromCharCode(0xe103),
-        }
     }
 
     goBack(event: any = ''): void {

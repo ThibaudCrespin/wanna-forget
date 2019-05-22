@@ -1,4 +1,4 @@
-<GridLayout columns="*" rows="75, *, 50, 80" >
+<GridLayout columns="*" rows="75, *, 50, 75" >
     <FlexboxLayout row="0" col="0" class="container">
         <Label class="h1" text="Date Picker" ></Label>
     </FlexboxLayout>
@@ -8,7 +8,7 @@
         </FlexboxLayout>
     </ScrollView>
     <FlexboxLayout row="2" col="0" class="container">
-        <Label class="fa scroll-btn" [text]="icons.scroll"></Label>
+        <Label class="fas chevron" text="&#xf103;"></Label>
     </FlexboxLayout>
     <Button row="3" col="0" text="Leave Memory" (tap)="goBack($event)" pageTransition="slide" class="button"></Button>
 </GridLayout>

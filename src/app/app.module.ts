@@ -13,6 +13,7 @@ import { MemoryComponent } from "./memory/memory.component";
 import { HeaderComponent } from "./memory/header/header.component";
 import { ItemComponent } from "./memory/list/item/item.component";
 import { ButtonsComponent } from "./memory/video/buttons/buttons.component";
+import { ParametersComponent } from "./memory/list/parameters/parameters.component";
 
 import { StartService } from "./services/start.service";
 import { InitialService } from "./services/initial.service";
@@ -42,7 +43,8 @@ import { MemoryService } from "./services/memory.service";
         ItemComponent,
         ListComponent,
         VideoComponent,
-        ButtonsComponent
+        ButtonsComponent,
+        ParametersComponent
     ],
     providers: [
         StartService,

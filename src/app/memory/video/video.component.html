@@ -1,6 +1,11 @@
 <GridLayout columns="*" rows="240, *, 80" >
     <FlexboxLayout row="0" col="0" flexDirection="column" class="container">
-        <Image class="video" [src]="memory.preview"></Image>
+        <!--<Image class="video" [src]="memory.preview"></Image>
+        <Label (tap)="playMemory($event)" class="fas play" text="&#xf144;"></Label>-->
+        <VideoPlayer
+            src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+            autoplay="true"
+            height="200"></VideoPlayer>
     </FlexboxLayout>
 
     <FlexboxLayout row="1" col="0" flexDirection="column" class="text">
@@ -14,7 +19,7 @@
         </FlexboxLayout>
     </FlexboxLayout>
 
-    <FlexboxLayout row="2" col="0" class="buttons">
-        <ns-buttons></ns-buttons>
+    <FlexboxLayout row="2" col="0" class="buttons" (longPress)="onLongPress($event)">
+        <ns-buttons *ngIf="showButtons"></ns-buttons>
     </FlexboxLayout>
 </GridLayout>
