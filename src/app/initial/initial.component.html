@@ -1,4 +1,7 @@
-<FlexboxLayout flexDirection="column" class="page">
+<FlexboxLayout flexDirection="column" class="page initial">
     <Label class="h1" [text]="init.title"></Label>
-    <TextView class="p" [text]="init.text"></TextView>
+    <Label class="p" [text]="init.init"></Label>
+    <Label class="p" [text]="init.text" textWrap="true"></Label>
+    <Label class="p" [text]="init.success"></Label>
+    <Label class="p" [text]="init.start"></Label>
 </FlexboxLayout>

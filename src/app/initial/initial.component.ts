@@ -8,7 +8,8 @@ import { RouterExtensions } from "nativescript-angular/router";
 @Component({
     selector: "ns-init",
     moduleId: module.id,
-    templateUrl: "./initial.component.html"
+    templateUrl: "./initial.component.html",
+    styleUrls: ["./initial.component.scss"]
 })
 export class InitialComponent implements OnInit {
     init: Initial;

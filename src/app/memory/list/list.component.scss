@@ -3,6 +3,7 @@
 .container {
     align-items: center;
     justify-content: center;
+    padding: 0 15;
 }
 
 .list {
@@ -10,11 +11,39 @@
 }
 
 .button {
-    background-color: $red;
+    background-color: rgba(236, 16, 16, 0.7);
     margin: 0;
+    border-radius: 0;
 }
 
 .chevron {
     color: $primary;
-    font-size: 30em;
+    font-size: 30;
+}
+
+.group {
+    height: 35;
+    padding: 0 10;
+    color: $primary;
+    border-width: 2;
+    border-color: $primary;
+}
+
+.datepicker {
+    width: 165;
+
+    .date {
+        font-size: 16;
+        padding: 0 10;
+    }
+
+    .calendar {
+        font-size: 20;
+    }
+}
+
+Switch {
+    color: $primary;
+    background-color: $secondary;
+    height: 35;
 }

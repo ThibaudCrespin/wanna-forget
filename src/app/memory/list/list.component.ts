@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
+import { Switch } from "tns-core-modules/ui/switch";
+import { EventData } from "tns-core-modules/data/observable";
 import { Memory } from "../../models/memory";
 import { MemoryService } from "~/app/services/memory.service";
 import { UserService } from "~/app/services/user.service";
@@ -29,5 +31,10 @@ export class ListComponent implements OnInit {
 
     goBack(event: any = ''): void {
         this.router.back();
+    }
+
+    onCheckedChange(args: EventData) {
+        let mySwitch = args.object as Switch;
+        let isChecked = mySwitch.checked; // boolean
     }
 }
