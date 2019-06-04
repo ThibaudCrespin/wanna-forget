@@ -1,6 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 
-import * as firebase from "nativescript-plugin-firebase";
+const firebase = require("nativescript-plugin-firebase");
 import { registerElement } from "nativescript-angular/element-registry";
 import { Video } from 'nativescript-videoplayer';
 
@@ -11,17 +11,15 @@ registerElement("VideoPlayer", () => Video);
     moduleId: module.id,
     templateUrl: "./app.component.html"
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     ngOnInit(): void {
-
-        firebase.init({
-                  }).then(
-                    instance => {
-                      console.log("firebase.init done");
-                    },
-                    error => {
-                      console.log(`firebase.init error: ${error}`);
-                    }
-                  );
-        };
+        firebase.init({}).then(
+            instance => {
+                console.log("Firebase Init OK", instance);
+            },
+            error => {
+                console.error("Firebase Init ERROR", error);
+            }
+        );
+    }
  }

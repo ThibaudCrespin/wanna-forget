@@ -2,11 +2,11 @@
 hooks/
 node_modules/
 platforms/
-App_Resources/
 
 # NativeScript Template
 *.js.map
 *.js
+*.css
 !webpack.config.js
 
 # Logs

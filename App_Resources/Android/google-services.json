@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1088001395784",
+    "firebase_url": "https://wanna-forget.firebaseio.com",
+    "project_id": "wanna-forget",
+    "storage_bucket": "wanna-forget.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088001395784:android:367a3cfcbc5bfad5",
+        "android_client_info": {
+          "package_name": "org.nativescript.wannaforget"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088001395784-c9b9dksj9f4a07p8k40okc4ie8s5fc2j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgjfvlLx4NL0qCp7NOypo3zqYjHyDLoMY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1088001395784-c9b9dksj9f4a07p8k40okc4ie8s5fc2j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
