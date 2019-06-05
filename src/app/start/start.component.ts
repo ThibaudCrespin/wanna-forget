@@ -12,7 +12,7 @@ import { UserService } from "../services/user.service";
     styleUrls: ["./start.component.scss"]
 })
 export class StartComponent implements OnInit {
-    userId: Number;
+    userId: string;
     start: Start;
 
     // This pattern makes use of Angular’s dependency injection implementation to
@@ -21,12 +21,12 @@ export class StartComponent implements OnInit {
     // defined in app.module.ts.
     constructor(private startService: StartService, private userService: UserService, private page: Page) {
         this.page.actionBarHidden = true;
-        // this.userId = Math.floor(Math.random() * Math.floor(4));
-        this.userId = 1;
+        this.userId = 'IUOhwITH5c6XuukugdKH';
     }
 
-    ngOnInit(): void {
+    async ngOnInit() {
         this.start = this.startService.getInitial();
         this.userService.setCurrentUserId(this.userId);
+        await this.userService.getUserById(this.userId);
     }
 }

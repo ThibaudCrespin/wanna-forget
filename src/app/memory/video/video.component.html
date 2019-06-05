@@ -3,16 +3,16 @@
         <!--<Image class="video" [src]="memory.preview"></Image>
         <Label (tap)="playMemory($event)" class="fas play" text="&#xf144;"></Label>-->
         <VideoPlayer
-            src="https://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"
+            [src]="memory?.video"
             autoplay="true"
             height="200"></VideoPlayer>
     </FlexboxLayout>
 
     <FlexboxLayout row="1" col="0" flexDirection="column" class="text">
-        <Label [text]="'Time: ' + memory.time" uppercase></Label>
-        <Label [text]="'Duration: ' + memory.duration"></Label>
-        <Label [text]="'Location: ' + memory.location"></Label>
-        <Label [text]="'Size: ' + memory.size + ' mb'"></Label>
+        <Label [text]="'Time: ' + (memory?.time | date:'shortTime')" uppercase></Label>
+        <Label [text]="'Duration: ' + memory?.duration"></Label>
+        <Label [text]="'Location: ' + memory?.location"></Label>
+        <Label [text]="'Size: ' + memory?.size + ' mb'"></Label>
         <FlexboxLayout *ngIf="memory?.with">
             <Label text="With:"></Label>
             <Label [text]="user" *ngFor="let user of memory.with"></Label>

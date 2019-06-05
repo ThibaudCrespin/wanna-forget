@@ -1,25 +1,81 @@
 import { Injectable } from "@angular/core";
+import { firestore } from "nativescript-plugin-firebase";
+import firebase = require("nativescript-plugin-firebase/app");
 
 import { Memory } from "../models/memory";
+import { _createNgProbe } from "@angular/platform-browser/src/dom/debug/ng_probe";
 
 export class MemoryService {
 
-    private memories = new Array<Memory>(
-        { id: 1, user: 1, time: '8:30', duration: "1'30", location: 'Chinatown', size: '168.0', picture: 'https://source.unsplash.com/random/100x100?place', preview: 'https://source.unsplash.com/random/400x250', video: ""},
-        { id: 2, user: 1, time: '9:30', duration: "2'07", location: 'Chinatown', size: '92.2', picture: 'https://source.unsplash.com/random/110x110?place', preview: 'https://source.unsplash.com/random/400x250', video: ""},
-        { id: 3, user: 1, time: '10:30', duration: "0'30", location: 'Manhattan', size: '234.0', picture: 'https://source.unsplash.com/random/90x90?place', preview: 'https://source.unsplash.com/random/400x250', video: ""},
-        { id: 4, user: 1, time: '11:30', duration: "1'12", location: 'Liberty Island', size: '127.5', picture: 'https://source.unsplash.com/random/100x100?place', preview: 'https://source.unsplash.com/random/400x250', video: ""},
-    );
+    private memories: Array<Memory>;
+    private activeMemory: Memory;
 
     getMemories(): Array<Memory> {
         return this.memories;
     }
 
-    getMemoryById(_id: Number): Memory {
-        return this.memories.filter((item) => item.id == _id)[0];
+    setMemories(_memories: Array<Memory>): void {
+        this.memories = _memories;
     }
 
-    getMemoriesByUser(userId: Number): Array<Memory> {
-        return this.memories.filter((item) => item.user === userId);
+    getActiveMemory(): Memory {
+        return this.activeMemory;
+    }
+
+    setActiveMemory(_memory: Memory): void {
+        console.log(_memory);
+        this.activeMemory = _memory;
+    }
+
+    async getMemoryById(id: string) {
+        return await firebase.firestore().collection("memories").doc(id).get()
+            .then((doc: firestore.DocumentSnapshot) => {
+                if (doc.exists) {
+                    this.setActiveMemory(<Memory> doc.data());
+                } else {
+                    console.log("MEMORY NOT FOUND");
+                }
+            })
+            .catch(error => console.log("Error getting document:", error));
+    }
+
+    getMemoriesByUser(userId: string): void {
+        const query: firestore.Query = firebase.firestore().collection("memories")
+            .where("user", "==", userId)
+            .orderBy("time", "desc");
+        query
+            .get()
+            .then((querySnapshot: firestore.QuerySnapshot) => {
+                let res = [];
+                querySnapshot.forEach(doc => {
+                    const mem = <Memory>{
+                        id: doc.id,
+                        ...doc.data()
+                    };
+                    res.push(mem);
+                });
+                this.setMemories(res);
+            })
+            .catch(err => console.log("Error getting memories:" + err));
+    }
+
+    deleteMemory(id: string): void {
+        firebase.firestore().collection("memories").doc(id)
+            .delete()
+            .then(() => {
+              console.log("MEMORY deleted");
+            })
+            .catch(err => console.log("Delete failed, error: " + err));
+    }
+
+    scrapMemory(memory: Memory): void {
+        firebase.firestore().collection("saves").doc()
+            .set({memory})
+            .then(() => console.log("MEMORY Scraped"))
+            .catch(err => console.log("Failed scraping, error: " + err));
+    }
+
+    getNextMemory(): Memory {
+        return this.memories[0];
     }
 }

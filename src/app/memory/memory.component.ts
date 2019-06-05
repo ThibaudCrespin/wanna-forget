@@ -7,7 +7,6 @@ import { Memory } from "../models/memory";
 import { MemoryService } from "../services/memory.service";
 import { User } from "../models/user";
 import { UserService } from "../services/user.service";
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: "ns-memory",
@@ -16,7 +15,7 @@ import { ActivatedRoute } from "@angular/router";
     styleUrls: ["./memory.component.scss"],
 })
 export class MemoryComponent implements OnInit {
-    private userId: Number;
+    private userId: string;
     public user: User;
     public memories: Array<Memory>;
     public direction: Number;
@@ -30,33 +29,30 @@ export class MemoryComponent implements OnInit {
         private memoryService: MemoryService,
         private userService: UserService,
         private page: Page,
-        private location: Location,
-        private route: ActivatedRoute
+        private location: Location
     ) {
         this.page.actionBarHidden = true;
-        this.route.params.subscribe((params) => {
-            this.userId = params["userId"];
-        });
+        this.user = this.userService.getCurrentUser();
+        this.userId = this.userService.getCurrentUserId();
 
         this.isLoading = true;
     }
 
-    ngOnInit(): void {
-        this.user = this.userService.getUserById(this.userId);
-        this.memories = this.memoryService.getMemoriesByUser(this.userId);
+    async ngOnInit() {
+        await this.memoryService.getMemoriesByUser(this.userId);
     }
 
     onSwipe(args: SwipeGestureEventData) {
-        console.log("Swipe!");
-        console.log("Object that triggered the event: " + args.object);
-        console.log("View that triggered the event: " + args.view);
-        console.log("Event name: " + args.eventName);
+        console.log("Swipe!", args);
         console.log("Swipe Direction: " + args.direction);
 
         this.direction = args.direction;
 
         switch(args.direction) {
             case 1: this.goBack(); break;
+            // case 2: this.nextMemory(); break;
+            case 4: this.scrapMemory(); break;
+            case 8: this.deleteMemory(); break;
             default: null;
         }
     }
@@ -70,5 +66,21 @@ export class MemoryComponent implements OnInit {
             this.isLoading = false;
         }, 2000);
 
+    }
+
+    deleteMemory(): void {
+        const activeMemory = this.memoryService.getActiveMemory().id;
+        this.memoryService.deleteMemory(activeMemory);
+        this.goBack();
+    }
+
+    scrapMemory(): void {
+        const activeMemory = this.memoryService.getActiveMemory();
+        this.memoryService.scrapMemory(activeMemory);
+        this.goBack();
+    }
+
+    nextMemory(): void {
+        this.memoryService.getNextMemory();
     }
 }

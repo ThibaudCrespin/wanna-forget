@@ -22,11 +22,11 @@ export class ListComponent implements OnInit {
     // Angular knows about this service because it is included in your app’s main NgModule,
     // defined in app.module.ts.
     constructor(private router: RouterExtensions, private memoryService: MemoryService, private userService: UserService) {
-        this.userId = this.userService.getCurrentUserId();
+
     }
 
     ngOnInit(): void {
-        this.items = this.memoryService.getMemoriesByUser(this.userId);
+        this.items = this.memoryService.getMemories();
     }
 
     goBack(event: any = ''): void {

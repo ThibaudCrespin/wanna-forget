@@ -12,7 +12,7 @@ import { GestureEventData } from "tns-core-modules/ui/gestures/gestures";
     styleUrls: ["./video.component.scss"]
 })
 export class VideoComponent implements OnInit {
-    private memoryId: Number;
+    private memoryId: string;
     public memory: Memory;
     public showButtons: Boolean;
     // This pattern makes use of Angular’s dependency injection implementation to
@@ -26,8 +26,9 @@ export class VideoComponent implements OnInit {
         this.showButtons = false;
     }
 
-    ngOnInit(): void {
-        this.memory = this.memoryService.getMemoryById(this.memoryId);
+    async ngOnInit() {
+        await this.memoryService.getMemoryById(this.memoryId);
+        this.memory = this.memoryService.getActiveMemory();
     }
 
     goBack(event: any = ''): void {

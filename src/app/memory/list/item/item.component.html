@@ -1,7 +1,7 @@
 <FlexboxLayout flexDirection="row" class="item" [nsRouterLink]="['/memory', 'video', item.id]">
     <Image class="profile" [src]="item.picture"></Image>
     <FlexboxLayout flexDirection="column" class="text">
-        <Label [text]="'Time: ' + item.time" uppercase></Label>
+        <Label [text]="'Time: ' + (item.time | date:'shortTime')" uppercase></Label>
         <Label [text]="'Duration: ' + item.duration"></Label>
         <Label [text]="'Location: ' + item.location"></Label>
     </FlexboxLayout>

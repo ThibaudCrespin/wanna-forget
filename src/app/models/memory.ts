@@ -1,10 +1,10 @@
 export interface Memory {
-    id: Number;
-    user: Number;
+    id: string;
+    user: string;
     time: string;
-    duration: string;
+    duration?: string;
     location: string;
-    size: string;
+    size?: string;
     with?: Number[];
     picture?: string;
     preview?: string;

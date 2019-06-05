@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
     // defined in app.module.ts.
     constructor(private userService: UserService) {}
 
-    ngOnInit(): void {
-        this.user = this.userService.getCurrentUser();
+    async ngOnInit() {
+        this.user = await this.userService.getCurrentUser();
     }
 }
