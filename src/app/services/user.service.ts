@@ -5,7 +5,7 @@ import firebase = require("nativescript-plugin-firebase/app");
 import { User } from "../models/user";
 
 export class UserService {
-    private userId: string;
+    private userId: string = null;
     private user: User;
 
     getCurrentUser(): User {
@@ -14,6 +14,11 @@ export class UserService {
 
     setCurrentUser(_user: User) {
         this.user = _user;
+    }
+
+    resetUser() {
+        this.userId = null;
+        this.user = null;
     }
 
     getCurrentUserId(): string {

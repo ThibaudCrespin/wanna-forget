@@ -30,6 +30,7 @@ export class ListComponent implements OnInit {
     }
 
     goBack(event: any = ''): void {
+        this.userService.resetUser();
         this.router.back();
     }
 

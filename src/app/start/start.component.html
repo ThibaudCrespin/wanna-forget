@@ -4,12 +4,19 @@
         <Label class="p" text="2.0.1"></Label>
     </FlexboxLayout>
 
-    <FlexboxLayout row="1" col="0" flexDirection="column" class="circle">
-        <Button text="Waiting for Connection" [nsRouterLink]="['/memory/list']" pageTransition="slide"></Button>
+    <FlexboxLayout row="1" col="0" flexDirection="column" class="circle" *ngIf="!userService.getCurrentUserId()">
+        <Button text="Waiting for Connection" [nsRouterLink]="['/memory/list']" pageTransition="slide" isEnabled="false"></Button>
         <Label class="p" text="Get close to the chip"></Label>
     </FlexboxLayout>
 
+    <FlexboxLayout row="1" col="0" flexDirection="column" class="circle active" *ngIf="!!userService.getCurrentUserId()">
+        <Label class="p" text="Tap to intrude"></Label>
+        <Button text="Enter memory" [nsRouterLink]="['/memory/list']" pageTransition="slide"></Button>
+        <Label class="p" text="You have 5 seconds"></Label>
+    </FlexboxLayout>
+
     <FlexboxLayout row="2" col="0" flexDirection="column" class="footer">
-        <Label class="p" text="Archives" [nsRouterLink]="['/archives']" pageTransition="slide"></Label>
+        <Label class="p" text="Archives" [nsRouterLink]="['/archives']" pageTransition="slide" *ngIf="!userService.getCurrentUserId()"></Label>
+        <Label class="success" text="Successfully connected to the chip" *ngIf="!!userService.getCurrentUserId()"></Label>
     </FlexboxLayout>
 </GridLayout>
