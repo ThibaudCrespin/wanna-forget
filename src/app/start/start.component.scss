@@ -18,6 +18,17 @@
         font-size: 22;
     }
 
+    .face {
+        width: 200;
+        height: 200;
+        border-radius: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        font-weight: 300;
+        font-size: 22;
+    }
+
     .p {
         margin: 15 0;
         color: $primary;

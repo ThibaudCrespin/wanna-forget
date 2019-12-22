@@ -6,7 +6,8 @@
         </FlexboxLayout>
         <FlexboxLayout row="0" col="2" class="group" flexDirection="row" justifyContent="space-between" alignItems="center">
             <Switch checked="true" (checkedChange)="onCheckedChange($event)"></Switch>
-            <Label class="period" text="Morning"></Label>
+            <Label class="period" text="Morning" *ngIf="morning"></Label>
+            <Label class="period" text="Afternoon" *ngIf="!morning"></Label>
         </FlexboxLayout>
     </GridLayout>
     <ScrollView class="scroll" row="1" col="0">

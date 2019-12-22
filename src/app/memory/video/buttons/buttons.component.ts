@@ -26,11 +26,15 @@ export class ButtonsComponent implements OnInit {
         this.router.back();
     }
 
-    eraseMemory(event: any = ''): void {
-        console.log(event);
+    deleteMemory(): void {
+        const activeMemory = this.memoryService.getActiveMemory().id;
+        this.memoryService.deleteMemory(activeMemory);
+        this.goBack();
     }
 
-    duplicateMemory(event: any = ''): void {
-        console.log(event);
+    scrapMemory(): void {
+        const activeMemory = this.memoryService.getActiveMemory();
+        this.memoryService.scrapMemory(activeMemory);
+        this.goBack();
     }
 }

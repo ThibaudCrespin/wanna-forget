@@ -15,6 +15,7 @@ import { UserService } from "~/app/services/user.service";
 export class ListComponent implements OnInit {
     private userId: Number;
     @Input() items: Array<Memory>;
+    public morning: boolean = true;
 
     public icons: any;
     // This pattern makes use of Angular’s dependency injection implementation to
@@ -36,6 +37,6 @@ export class ListComponent implements OnInit {
 
     onCheckedChange(args: EventData) {
         let mySwitch = args.object as Switch;
-        let isChecked = mySwitch.checked; // boolean
+        this.morning = mySwitch.checked; // boolean
     }
 }

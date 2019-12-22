@@ -15,6 +15,7 @@ export class VideoComponent implements OnInit {
     private memoryId: string;
     public memory: Memory;
     public showButtons: Boolean;
+    public isPlaying: boolean = false;
     // This pattern makes use of Angular’s dependency injection implementation to
     // inject an instance of the ItemService service into this class.
     // Angular knows about this service because it is included in your app’s main NgModule,
@@ -45,5 +46,6 @@ export class VideoComponent implements OnInit {
 
     playMemory(event: any) {
         console.log("PLAY");
+        this.isPlaying = true;
     }
 }

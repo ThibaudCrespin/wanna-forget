@@ -2,11 +2,14 @@
 
 .container {
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .text {
-    padding: 0 15;
+    padding: 15;
 
     Label {
         color: $primary;

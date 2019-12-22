@@ -23,7 +23,6 @@ export class MemoryService {
     }
 
     setActiveMemory(_memory: Memory): void {
-        console.log(_memory);
         this.activeMemory = _memory;
     }
 

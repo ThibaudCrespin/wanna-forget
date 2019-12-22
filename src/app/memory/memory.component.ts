@@ -70,6 +70,7 @@ export class MemoryComponent implements OnInit {
 
     deleteMemory(): void {
         const activeMemory = this.memoryService.getActiveMemory().id;
+        console.log(activeMemory);
         this.memoryService.deleteMemory(activeMemory);
         this.goBack();
     }

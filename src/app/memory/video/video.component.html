@@ -1,10 +1,10 @@
-<GridLayout columns="*" rows="240, *, 80" >
-    <FlexboxLayout row="0" col="0" flexDirection="column" class="container">
-        <!--<Image class="video" [src]="memory.preview"></Image>
-        <Label (tap)="playMemory($event)" class="fas play" text="&#xf144;"></Label>-->
+<GridLayout columns="*" rows="200, *, 80" >
+    <FlexboxLayout row="0" col="0" flexDirection="column" class="container" [backgroundImage]="memory.preview">
+        <Label (tap)="playMemory($event)" class="fas play" text="&#xf144;" *ngIf="!isPlaying"></Label>
         <VideoPlayer
             [src]="memory?.video"
             autoplay="true"
+            *ngIf="isPlaying"
             height="200"></VideoPlayer>
     </FlexboxLayout>
 
