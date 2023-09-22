@@ -1,3 +1,3 @@
 # Wanna Forget
 
-An ActionScript project, working with Angular.
+A Nativescript project, working with Angular.
